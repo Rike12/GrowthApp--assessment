@@ -1,12 +1,10 @@
 
-let COUNTRY;
 // Function to retrieve visitor information
 async function getVisitorInformation() {
     const visitorInfo = {
-        userAgent: navigator.userAgent,
-        language: navigator.language,
+        browser_type: navigator.userAgent,
         country:   await getUserCountry(),
-        deviceType: getDeviceType()
+        device_type: getDeviceType()
 
     };
 
@@ -32,7 +30,7 @@ if (navigator.geolocation) {
 
         let res = await fetch(URL);
         let data = await res.json()
-        console.log(data[0].country)
+        // console.log(data[0])
         return data[0].country
     } catch (error) {
         console.log("Geolocation is not supported by this browser.");
@@ -67,12 +65,14 @@ async function sendUserDetails(userDetails){
     const assessmentUrl = "https://tikka-lite.onrender.com/assessment"
     const response = await fetch(assessmentUrl, {
     method: 'POST',
-    hedaer: {
+    headers: {
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'x-api-key': "SFVHRUNPQ0tIVUdFQ09DS0hVR0VDT0NLSFVHRUNPQ0tIVUdFQ09DSw=="
     },
     body: JSON.stringify(userDetails)
   })
+  console.log("loading...")
   const data = await response.json()
       console.log("data",data)
 } catch (error) {
@@ -83,6 +83,6 @@ async function sendUserDetails(userDetails){
 window.addEventListener("DOMContentLoaded", async ()=>{
 
     const visitorInfo = await getVisitorInformation();
-    sendUserDetails(visitorInfo)
+    await sendUserDetails(visitorInfo)
     console.log(visitorInfo);
 })
