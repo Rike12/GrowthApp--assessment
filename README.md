@@ -1,9 +1,9 @@
 # GrowthApp--assessment
- # Frontend Developer Portfolio
 
 This project is an assessment from GrowthApp, showcasing Mutiat Adepoju's skills, interests, and featured projects.
 
 You can view the website [https://growth-app-assessment.netlify.app/].
+Github Respository [https://github.com/Rike12/GrowthApp--assessment]
 
 ## Technologies Used
 
